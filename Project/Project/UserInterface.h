@@ -1,4 +1,5 @@
-#include "Product.h"
+#include "ProductInputScreen.h"
+
 
 class UserInterface
 {

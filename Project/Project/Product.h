@@ -4,9 +4,10 @@
 #include <string>
 #include <iomanip>
 #include <Windows.h>
+#include <numeric> 
+
 
 using namespace std;
-
 
 void getaLine(string& inStr); // получение строки текста
 char getaChar();
