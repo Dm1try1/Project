@@ -1,5 +1,6 @@
 #include "Product.h"
 #include "ProductList.h"
+#include "ProductInputScreen.h"
 
 void getaLine(string& inStr) // получение строки текста
 {
