@@ -123,3 +123,16 @@ void ProductList::display() // вывод списка украшений
 		}
 	}
 }
+////////////////методы класса userInterface//////////////
+UserInterface::UserInterface()
+{
+	ptrProductList = new ProductList;
+
+}
+//---------------------------------------------------------
+UserInterface::~UserInterface()
+{
+	delete ptrProductList;
+
+}
+//---------------------------------------------------------
