@@ -54,3 +54,70 @@ string Product::getMaterial() //геттер возвращает материал
 {
 	return material;
 }
+///////////метод класса ProducttInputScreen//////////////////
+void ProductInputScreen::setProduct() // добавить данные об украшении
+{
+
+	cout << "¬ведите название украшени€: " << endl;
+	getaLine(tName);
+	cout << "¬ведите тип: " << endl;
+	getaLine(tType);
+	cout << "¬ведите материал: " << endl;
+	getaLine(tMaterial);
+	cout << "¬ведите размер: " << endl;
+	cin >> tSize;
+	cout << "¬ведите количество: " << endl;
+	cin >> tNumber;
+	cout << "¬ведите цену: " << endl;
+	cin >> tPrice;
+	cin.ignore(80, '\n');
+	Product* ptrProduct = new Product(tName, tType, tMaterial, tSize, tNumber, tPrice); // создать украшение
+	ptrProductList->add(ptrProduct); // занести в список украшений
+}
+//---------------------------------------------------------
+////////////////методы класса ProductList///////////////////
+ProductList::~ProductList() // деструктор
+{
+	while (!setPtrsProd.empty()) // удаление всех украшений,
+	{ // удаление указателей из контейнера
+		iter = setPtrsProd.begin();
+		delete* iter;
+		setPtrsProd.erase(iter);
+	}
+}
+//---------------------------------------------------------
+void ProductList::add(Product* ptrT)
+{
+	setPtrsProd.push_back(ptrT); // вставка нового украшени€ в список
+}
+//---------------------------------------------------------
+
+
+void ProductList::display() // вывод списка украшений
+{
+	cout << setw(22) << left << "Ќазвание украшени€"
+		<< setw(8) << "“ип"
+		<< setw(15) << "ћатериал"
+		<< setw(15) << "–азмер"
+		<< setw(22) << " ол-во на складе"
+		<< setw(22) << "÷ена"
+		<< endl;
+	if (setPtrsProd.empty()) { // если список украшений пуст
+		cout << "***Ќет украшений***\n" << endl; // выводим запись, что он пуст)
+	}
+	else
+	{
+		iter = setPtrsProd.begin();
+		while (iter != setPtrsProd.end()) // распечатываем все украшени€
+		{
+			cout << setw(22) << left << (*iter)->getName()
+				<< setw(8) << (*iter)->getType()
+				<< setw(15) << (*iter)->getMaterial()
+				<< setw(15) << (*iter)->getAptSize()
+				<< setw(22) << (*iter)->getAptNumber()
+				<< setw(22) << (*iter)->getAptPrice()
+				<< endl;
+			*iter++;
+		}
+	}
+}
